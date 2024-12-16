@@ -15,6 +15,24 @@ double TrueAnswer(double x)
     return 1 - x * x + 2 * x - 11 * x + (x * x * x * x) / 6.0 + (x * x) / 2.0;
 }
 
+void RungeKutta(double* y1, double* y2, double t, double h, int i)
+{
+    double k1_y1 = h * F1(y2[i - 1]);
+    double k1_y2 = h * F2(t, y1[i - 1], y2[i - 1]);
+
+    double k2_y1 = h * F1(y2[i - 1] + k1_y2 / 2);
+    double k2_y2 = h * F2(t + h / 2, y1[i - 1] + k1_y1 / 2, y2[i - 1] + k1_y2 / 2);
+
+    double k3_y1 = h * F1(y2[i - 1] + k2_y2 / 2);
+    double k3_y2 = h * F2(t + h / 2, y1[i - 1] + k2_y1 / 2, y2[i - 1] + k2_y2 / 2);
+
+    double k4_y1 = h * F1(y2[i - 1] + k3_y2);
+    double k4_y2 = h * F2(t + h, y1[i - 1] + k3_y1, y2[i - 1] + k3_y2);
+
+    y1[i] = y1[i - 1] + (k1_y1 + 2 * k2_y1 + 2 * k3_y1 + k4_y1) / 6;
+    y2[i] = y2[i - 1] + (k1_y2 + 2 * k2_y2 + 2 * k3_y2 + k4_y2) / 6;
+}
+
 Solve* AdamsMoulton6RangSolver(double y1_0, double y2_0, double a, double b, double h, Solve* solve, int needSolveWithPoints)
 {
     unsigned long long pointsCount = fabs(b - a) / h + 1;
@@ -27,21 +45,7 @@ Solve* AdamsMoulton6RangSolver(double y1_0, double y2_0, double a, double b, dou
     double t = a;
 
     for (int i = 1; i < 6; i++) {
-        double k1_y1 = h * F1(y2[i - 1]);
-        double k1_y2 = h * F2(t, y1[i - 1], y2[i - 1]);
-
-        double k2_y1 = h * F1(y2[i - 1] + k1_y2 / 2);
-        double k2_y2 = h * F2(t + h / 2, y1[i - 1] + k1_y1 / 2, y2[i - 1] + k1_y2 / 2);
-
-        double k3_y1 = h * F1(y2[i - 1] + k2_y2 / 2);
-        double k3_y2 = h * F2(t + h / 2, y1[i - 1] + k2_y1 / 2, y2[i - 1] + k2_y2 / 2);
-
-        double k4_y1 = h * F1(y2[i - 1] + k3_y2);
-        double k4_y2 = h * F2(t + h, y1[i - 1] + k3_y1, y2[i - 1] + k3_y2);
-
-        y1[i] = y1[i - 1] + (k1_y1 + 2 * k2_y1 + 2 * k3_y1 + k4_y1) / 6;
-        y2[i] = y2[i - 1] + (k1_y2 + 2 * k2_y2 + 2 * k3_y2 + k4_y2) / 6;
-
+        RungeKutta(y1, y2, t, h, i);
         t += h;
     }
 
@@ -84,9 +88,7 @@ Solve* AdamsMoulton6RangSolver(double y1_0, double y2_0, double a, double b, dou
     return solve;
 }
 
-Solve* ShootingMethod(double y_in_a, double y_in_b, double a, double b, double h, double e,
-    Solve* AdamsMoulton6RangSolver(double y1_0, double y2_0, double a, double b, double h,
-        Solve* solve, int needSolveWithPoints))
+Solve* ShootingMethod(double y_in_a, double y_in_b, double a, double b, double h, double e)
 {
     Solve* y = (Solve*)malloc(sizeof(Solve));
     y->n = 0;
@@ -137,7 +139,7 @@ void WriteTrueAnswer(double a, double h, Solve* solve)
 
 Solve* Solver(double a, double b, double c, double d, double h, double e)
 {
-    Solve* y = ShootingMethod(c, d, a, b, h, e, AdamsMoulton6RangSolver);
+    Solve* y = ShootingMethod(c, d, a, b, h, e);
     WriteTrueAnswer(a, h, y);
     return y;
 }

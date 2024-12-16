@@ -1,0 +1,3 @@
+﻿  odu_32.c
+C:\Users\Danil\OneDrive\Documents\GitHub\Problem-32\odu_32.c(38,54): warning C4244: инициализация: преобразование "double" в "unsigned __int64", возможна потеря данных
+  Problem-32.vcxproj -> C:\Users\Danil\OneDrive\Documents\GitHub\Problem-32\x64\Debug\Problem-32.exe
