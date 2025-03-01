@@ -2,5 +2,5 @@
 
 double f(double x)
 {
-    return x * x + 1;
+    return -7 * x / ((x * x + 1) * (x * x + 1) * (x * x + 1));
 }

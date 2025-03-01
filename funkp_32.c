@@ -2,5 +2,5 @@
 
 double p(double x)
 {
-    return -2 * x / (x * x + 1);
+    return -x / (x * x + 1);
 }

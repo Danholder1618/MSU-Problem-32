@@ -1,3 +1,11 @@
-﻿  odu_32.c
-D:\Desktop\Coder\Contest\Semestr_7\Problem-32\odu_32.c(20,54): warning C4244: инициализация: преобразование "double" в "unsigned __int64", возможна потеря данных
+﻿  main_32.c
+  odu_32.c
+  Создание кода...
+D:\Desktop\Coder\Contest\Semestr_7\Problem-32\main_32.c(25,15): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Desktop\Coder\Contest\Semestr_7\Problem-32\main_32.c(26,15): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Desktop\Coder\Contest\Semestr_7\Problem-32\main_32.c(27,15): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Desktop\Coder\Contest\Semestr_7\Problem-32\main_32.c(28,15): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Desktop\Coder\Contest\Semestr_7\Problem-32\main_32.c(29,15): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Desktop\Coder\Contest\Semestr_7\Problem-32\main_32.c(30,15): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Desktop\Coder\Contest\Semestr_7\Problem-32\odu_32.c(56,54): warning C4244: инициализация: преобразование "double" в "unsigned __int64", возможна потеря данных
   Problem-32.vcxproj -> D:\Desktop\Coder\Contest\Semestr_7\Problem-32\x64\Debug\Problem-32.exe

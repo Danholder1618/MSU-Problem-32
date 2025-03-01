@@ -27,13 +27,13 @@
     <ClCompile Include="main_32.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="odu_32.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="pbPlots.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="supportLib.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="odu_32.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
