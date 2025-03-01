@@ -156,6 +156,7 @@ Solve* ShootingMethod(double y_in_a, double y_in_b, double a, double b, double h
 Solve* RichardsonExtrapolation(double a, double b, double c, double d, double e, double n) {
     double n1 = n;
     double h1 = (b - a) / (n1 - 1);
+    double n2;
     double h2;
     Solve* y1 = NULL;
     Solve* y2 = NULL;
@@ -165,7 +166,7 @@ Solve* RichardsonExtrapolation(double a, double b, double c, double d, double e,
         y1 = ShootingMethod(c, d, a, b, h1, e);
         WriteTrueAnswer(a, h1, y1);
 
-        double n2 = 2 * n1;
+        n2 = 2 * n1;
         h2 = (b - a) / (n2 - 1);
         y2 = ShootingMethod(c, d, a, b, h2, e);
         WriteTrueAnswer(a, h2, y2);
